@@ -12,13 +12,15 @@ body {
 
 #toolbar {
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     gap: 20px;
     padding: 30px;
 }
 
-#all, #population, #area {
+#all,
+#population,
+#area {
     font-size: 17px;
     background-color: black;
     color: white;
@@ -31,4 +33,58 @@ h1 {
 
 img {
     height: 200px;
+}
+
+hr {
+    border: 2px solid black;
+}
+
+#previousarrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-right: 15px solid black;
+    border-left: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+
+#previous {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 3px;
+}
+
+#afterarrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 15px solid black;
+    border-right: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+
+#after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 3px;
+}
+
+#after:hover, #previous:hover {
+    cursor: pointer;
+    color: white;
+    text-shadow: 0px 0px 20px rgb(37, 106, 84);
+}
+
+#after:hover #afterarrow {
+    border-left-color: white;
+}
+
+#previous:hover #previousarrow {
+    border-right-color: white;
 }
