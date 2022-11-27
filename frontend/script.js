@@ -32,35 +32,38 @@ selectedMenu.addEventListener("click", function () {
         selectedCountry = countries.filter(x => x.name.common === selectedMenu.value)[0];
         displayCountryDetails(selectedCountry);
     } else {
-        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>"
+        countryDetailsContainer.innerHTML = "<h1><strong>Select country from the list!</strong></h1>";
+        selectTranslations.innerHTML = "";
     }
 });
 
 let neighbourPopulation = document.getElementById("population");
 neighbourPopulation.addEventListener("click", function () {
-    if (countryDetailsContainer.innerHTML !== "<strong>Select country from the list!</strong>") {
+    if (countryDetailsContainer.innerHTML !== "<h1><strong>Select country from the list!</strong></h1>") {
         let neighbours = selectedCountry.borders;
         selectedCountry = countries.filter(x => neighbours.includes(x.cca3)).sort((a, b) => b.population - a.population)[0];
         displayCountryDetails(selectedCountry);
     } else {
-        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>"
+        countryDetailsContainer.innerHTML = "<h1><strong>Select country from the list!</strong></h1>";
+        selectTranslations.innerHTML = "";
     }
 })
 let neighbourArea = document.getElementById("area");
 neighbourArea.addEventListener("click", function () {
-    if (countryDetailsContainer.innerHTML !== "<strong>Select country from the list!</strong>") {
+    if (countryDetailsContainer.innerHTML !== "<h1><strong>Select country from the list!</strong></h1>") {
         let neighbours = selectedCountry.borders;
         selectedCountry = countries.filter(x => neighbours.includes(x.cca3)).sort((a, b) => b.area - a.area)[0];
-        displayCountryDetails(selectedCountry);
+        displayCountryDetails(selectedCountry); 
     } else {
-        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>";
+        countryDetailsContainer.innerHTML = "<h1><strong>Select country from the list!</strong></h1>";;
+        selectTranslations.innerHTML = "";
     }
 });
 
 //show previous country
 let leftArrow = document.getElementById("previous");
 leftArrow.addEventListener("click", function () {
-    if (countryDetailsContainer.innerHTML !== "<strong>Select country from the list!</strong>") {
+    if (countryDetailsContainer.innerHTML !== "<h1><strong>Select country from the list!</strong></h1>") {
         if (selectedCountry !== countries[0]) {
             selectedCountry = countries[countries.indexOf(selectedCountry) - 1];
         } else {
@@ -68,14 +71,15 @@ leftArrow.addEventListener("click", function () {
         };
         displayCountryDetails(selectedCountry);
     } else {
-        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>";
+        countryDetailsContainer.innerHTML = "<h1><strong>Select country from the list!</strong></h1>";
+        selectTranslations.innerHTML = "";
     }
 });
 
 //show next country
 let rightArrow = document.getElementById("after");
 rightArrow.addEventListener("click", function () {
-    if (countryDetailsContainer.innerHTML !== "<strong>Select country from the list!</strong>") {
+    if (countryDetailsContainer.innerHTML !== "<h1><strong>Select country from the list!</strong></h1>") {
         if (selectedCountry !== countries[countries.length - 1]) {
             selectedCountry = countries[countries.indexOf(selectedCountry) + 1];
         } else {
@@ -83,7 +87,8 @@ rightArrow.addEventListener("click", function () {
         };
         displayCountryDetails(selectedCountry);
     } else {
-        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>";
+        countryDetailsContainer.innerHTML = "<h1><strong>Select country from the list!</strong></h1>";
+        selectTranslations.innerHTML = "";
     }
 });
 
