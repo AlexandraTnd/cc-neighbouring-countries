@@ -22704,3 +22704,7 @@ const countries = [
     capitalInfo: { latlng: [1.33, 172.98] },
   },
 ];
+
+
+
+export {countries}
