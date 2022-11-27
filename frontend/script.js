@@ -1,5 +1,5 @@
 
-let countriesList = "";
+let countriesList = "<option value='selected'>Select Country</option>";
 countries.forEach(country => {
     countriesList += `<option value="${country.name.common}">${country.name.common}</option>`;
 });
@@ -10,15 +10,22 @@ let countryDetailsContainer = document.getElementById("country");
 let selectedMenu = document.getElementById("all");
 let selectedCountry;
 
-selectedMenu.addEventListener("click", function () {
-    selectedCountry = countries.filter(x => x.name.common === selectedMenu.value)[0];
-    console.log(selectedCountry);
-    let countryDetails = `<img src="${selectedCountry.flags.svg}">` +
-        `<h1>${selectedCountry.name.common}</h1><hr>` +
-        `<h2>Region: ${selectedCountry.region}</h2>` +
-        `<h3>Subregion: ${selectedCountry.subregion}</h3>` +
-        `<h4>Capital: ${selectedCountry.capital[0]}</h4>`;
+function displayCountryDetails(country) {
+    let countryDetails = `<img src="${country.flags.svg}">` +
+        `<h1>${country.name.common}</h1><hr>` +
+        `<h2>Region: ${country.region}</h2>` +
+        `<h3>Subregion: ${country.subregion}</h3>` +
+        `<h4>Capital: ${country.capital[0]}</h4>`;
     countryDetailsContainer.innerHTML = countryDetails;
+}
+
+selectedMenu.addEventListener("click", function () {
+    if (selectedMenu.value !== "selected") {
+        selectedCountry = countries.filter(x => x.name.common === selectedMenu.value)[0];
+        displayCountryDetails(selectedCountry);
+    } else {
+        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>"
+    }
 });
 
 let neighbourPopulation = document.getElementById("population");
@@ -26,14 +33,9 @@ neighbourPopulation.addEventListener("click", function () {
     if (countryDetailsContainer.innerHTML !== "<strong>Select country from the list!</strong>") {
         let neighbours = selectedCountry.borders;
         selectedCountry = countries.filter(x => neighbours.includes(x.cca3)).sort((a, b) => b.population - a.population)[0];
-        let countryDetails = `<img src="${selectedCountry.flags.svg}">` +
-            `<h1>${selectedCountry.name.common}</h1><hr>` +
-            `<h2>Region: ${selectedCountry.region}</h2>` +
-            `<h3>Subregion: ${selectedCountry.subregion}</h3>` +
-            `<h4>Capital: ${selectedCountry.capital[0]}</h4>`;
-        countryDetailsContainer.innerHTML = countryDetails;
+        displayCountryDetails(selectedCountry);
     } else {
-        countryDetailsContainer.innerHTML = "<strong>PICK COUNTRY!</strong>"
+        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>"
     }
 })
 let neighbourArea = document.getElementById("area");
@@ -41,14 +43,9 @@ neighbourArea.addEventListener("click", function () {
     if (countryDetailsContainer.innerHTML !== "<strong>Select country from the list!</strong>") {
         let neighbours = selectedCountry.borders;
         selectedCountry = countries.filter(x => neighbours.includes(x.cca3)).sort((a, b) => b.area - a.area)[0];
-        let countryDetails = `<img src="${selectedCountry.flags.svg}">` +
-            `<h1>${selectedCountry.name.common}</h1><hr>` +
-            `<h2>Region: ${selectedCountry.region}</h2>` +
-            `<h3>Subregion: ${selectedCountry.subregion}</h3>` +
-            `<h4>Capital: ${selectedCountry.capital[0]}</h4>`;
-        countryDetailsContainer.innerHTML = countryDetails;
+        displayCountryDetails(selectedCountry);
     } else {
-        countryDetailsContainer.innerHTML = "<strong>PICK COUNTRY!</strong>"
+        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>";
     }
 });
 
@@ -59,16 +56,11 @@ leftArrow.addEventListener("click", function () {
         if (selectedCountry !== countries[0]) {
             selectedCountry = countries[countries.indexOf(selectedCountry) - 1];
         } else {
-            selectedCountry = countries[countries.length-1];
+            selectedCountry = countries[countries.length - 1];
         };
-        let countryDetails = `<img src="${selectedCountry.flags.svg}">` +
-            `<h1>${selectedCountry.name.common}</h1><hr>` +
-            `<h2>Region: ${selectedCountry.region}</h2>` +
-            `<h3>Subregion: ${selectedCountry.subregion}</h3>` +
-            `<h4>Capital: ${selectedCountry.capital[0]}</h4>`;
-        countryDetailsContainer.innerHTML = countryDetails;
+        displayCountryDetails(selectedCountry);
     } else {
-        countryDetailsContainer.innerHTML = "<strong>PICK COUNTRY!</strong>"
+        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>";
     }
 });
 
@@ -76,19 +68,14 @@ leftArrow.addEventListener("click", function () {
 let rightArrow = document.getElementById("after");
 rightArrow.addEventListener("click", function () {
     if (countryDetailsContainer.innerHTML !== "<strong>Select country from the list!</strong>") {
-        if (selectedCountry !== countries[countries.length-1]) {
+        if (selectedCountry !== countries[countries.length - 1]) {
             selectedCountry = countries[countries.indexOf(selectedCountry) + 1];
         } else {
             selectedCountry = countries[0];
         };
-        let countryDetails = `<img src="${selectedCountry.flags.svg}">` +
-            `<h1>${selectedCountry.name.common}</h1><hr>` +
-            `<h2>Region: ${selectedCountry.region}</h2>` +
-            `<h3>Subregion: ${selectedCountry.subregion}</h3>` +
-            `<h4>Capital: ${selectedCountry.capital[0]}</h4>`;
-        countryDetailsContainer.innerHTML = countryDetails;
+        displayCountryDetails(selectedCountry);
     } else {
-        countryDetailsContainer.innerHTML = "<strong>PICK COUNTRY!</strong>"
+        countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>";
     }
 })
 
