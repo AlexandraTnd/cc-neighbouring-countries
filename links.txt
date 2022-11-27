@@ -1,0 +1,18 @@
+Create HTML elements from Array items:
+https://gomakethings.com/two-more-ways-to-create-html-from-an-array-of-data-with-vanilla-js/
+
+
+Input event examples:
+https://www.javascripttutorial.net/javascript-dom/javascript-input-event/
+
+
+Click event:
+https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+
+
+Add Bootstrap with <link> /<script> tag:
+https://getbootstrap.com/docs/5.2/getting-started/introduction/#quick-start
+
+
+Add Tailwind with <link> / <script> tag:
+https://tailwindcss.com/docs/installation/play-cdn
