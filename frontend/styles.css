@@ -18,7 +18,8 @@ body {
     padding: 30px;
 }
 
-#all,
+#all, 
+#translations,
 #population,
 #area {
     font-size: 17px;

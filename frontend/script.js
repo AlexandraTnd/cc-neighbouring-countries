@@ -8,6 +8,7 @@ document.getElementById('all').innerHTML = countriesList;
 
 let countryDetailsContainer = document.getElementById("country");
 let selectedMenu = document.getElementById("all");
+let selectTranslations = document.getElementById("translations");
 let selectedCountry;
 
 function displayCountryDetails(country) {
@@ -17,6 +18,13 @@ function displayCountryDetails(country) {
         `<h3>Subregion: ${country.subregion}</h3>` +
         `<h4>Capital: ${country.capital[0]}</h4>`;
     countryDetailsContainer.innerHTML = countryDetails;
+    selectedMenu.value = country.name.common;
+    let translationKeys = Object.keys(country.translations);
+    let translationMenu = '';
+    translationKeys.forEach(x => {
+        translationMenu += `<option value=${x}>${x}</option>`
+    });
+    selectTranslations.innerHTML = translationMenu;
 }
 
 selectedMenu.addEventListener("click", function () {
@@ -77,6 +85,8 @@ rightArrow.addEventListener("click", function () {
     } else {
         countryDetailsContainer.innerHTML = "<strong>Select country from the list!</strong>";
     }
-})
+});
+
+
 
 
