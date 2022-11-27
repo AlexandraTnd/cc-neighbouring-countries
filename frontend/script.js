@@ -50,6 +50,46 @@ neighbourArea.addEventListener("click", function () {
     } else {
         countryDetailsContainer.innerHTML = "<strong>PICK COUNTRY!</strong>"
     }
+});
+
+//show previous country
+let leftArrow = document.getElementById("previous");
+leftArrow.addEventListener("click", function () {
+    if (countryDetailsContainer.innerHTML !== "<strong>Select country from the list!</strong>") {
+        if (selectedCountry !== countries[0]) {
+            selectedCountry = countries[countries.indexOf(selectedCountry) - 1];
+        } else {
+            selectedCountry = countries[countries.length-1];
+        };
+        let countryDetails = `<img src="${selectedCountry.flags.svg}">` +
+            `<h1>${selectedCountry.name.common}</h1><hr>` +
+            `<h2>Region: ${selectedCountry.region}</h2>` +
+            `<h3>Subregion: ${selectedCountry.subregion}</h3>` +
+            `<h4>Capital: ${selectedCountry.capital[0]}</h4>`;
+        countryDetailsContainer.innerHTML = countryDetails;
+    } else {
+        countryDetailsContainer.innerHTML = "<strong>PICK COUNTRY!</strong>"
+    }
+});
+
+//show next country
+let rightArrow = document.getElementById("after");
+rightArrow.addEventListener("click", function () {
+    if (countryDetailsContainer.innerHTML !== "<strong>Select country from the list!</strong>") {
+        if (selectedCountry !== countries[countries.length-1]) {
+            selectedCountry = countries[countries.indexOf(selectedCountry) + 1];
+        } else {
+            selectedCountry = countries[0];
+        };
+        let countryDetails = `<img src="${selectedCountry.flags.svg}">` +
+            `<h1>${selectedCountry.name.common}</h1><hr>` +
+            `<h2>Region: ${selectedCountry.region}</h2>` +
+            `<h3>Subregion: ${selectedCountry.subregion}</h3>` +
+            `<h4>Capital: ${selectedCountry.capital[0]}</h4>`;
+        countryDetailsContainer.innerHTML = countryDetails;
+    } else {
+        countryDetailsContainer.innerHTML = "<strong>PICK COUNTRY!</strong>"
+    }
 })
 
 
